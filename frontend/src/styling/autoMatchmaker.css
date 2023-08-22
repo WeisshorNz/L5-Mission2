@@ -23,6 +23,7 @@
   padding-top: 1.75rem;
   margin-top: 3.75rem;
   color: white;
+  border: white solid 0.5px;
 }
 .heading-container {
   display: flex;
@@ -32,6 +33,11 @@
 .heart-logo {
   height: 3rem;
   width: 3rem;
+}
+
+input {
+  border: white solid 0.5px;
+  border-radius: 0.25rem;
 }
 button {
   background-color: white;

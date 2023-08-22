@@ -9,13 +9,17 @@ export default function Navbar() {
       <div className="navigation-menu">
         <ul>
           <li>
-            <a href="/home">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="/about">About</a>
+            <a href="https://www.turners.co.nz/Company/About-Us/Overview/">
+              About
+            </a>
           </li>
           <li>
-            <a href="/contact">Contact Us</a>
+            <a href="https://www.turners.co.nz/Company/Contact-Us/">
+              Contact Us
+            </a>
           </li>
         </ul>
       </div>

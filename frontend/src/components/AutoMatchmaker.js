@@ -50,12 +50,12 @@ function AutoMatchmaker() {
         <img src={tHeart} alt="Heart Logo" className="heart-logo" />
       </div>
       <div className="hero-container">
-        {/* <img src={blueCar} alt="blueCar" className="blue-car" /> */}
         <br></br>
         <div className="input-container">
           <h3>
             Upload an image below of what you're liking the look of, and we'll
-            match you with one of our similar current cars for sale!
+            match you with one of our sweet rides for sale that's just your
+            style!
           </h3>
           <input
             type="file"
