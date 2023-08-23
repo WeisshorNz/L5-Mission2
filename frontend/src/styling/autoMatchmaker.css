@@ -87,12 +87,17 @@ h3 {
 }
 
 .car-card {
+  display: flex;
   background-color: white;
+  width: 15rem;
+  height: 8rem;
+  border-radius: 0.5rem;
   color: #1a75bb;
-  border: #1a75bb 1px solid;
+  border: #1a75bb 0.5rem solid;
 }
 .car-image {
-  object-fit: fill;
-  height: auto;
+  object-fit: cover;
+  height: 100%;
   width: auto;
+  border-radius: 0.5rem;
 }

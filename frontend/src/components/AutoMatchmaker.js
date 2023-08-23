@@ -16,7 +16,7 @@ function AutoMatchmaker() {
     }
 
     const apiUrl = "YOUR_CUSTOM_VISION_API_ENDPOINT";
-    const apiKey = "9fa1f92fc90b4d6881ed695eff04f44f";
+    const apiKey = "APIKEY";
 
     const headers = {
       "Content-Type": "application/octet-stream",
