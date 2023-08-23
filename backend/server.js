@@ -6,8 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-const port = 3000;
-app.use(express.raw({ type: "image/jpeg", limit: "10mb" })); 
+const port = 4000;
+app.use(express.raw({ type: "image/jpeg", limit: "10mb" }));
 app.use(cors());
 
 app.post("/api", async (req, res) => {
@@ -29,16 +29,14 @@ app.post("/api", async (req, res) => {
 
     // res.json(response.data);
 
-     const highProbabilityPredictions = [];
-     for (const prediction of response.data.predictions) {
-       if (prediction.probability >= 0.6) {
-         highProbabilityPredictions.push(prediction);
-       }
-     }
-
+    const highProbabilityPredictions = [];
+    for (const prediction of response.data.predictions) {
+      if (prediction.probability >= 0.6) {
+        highProbabilityPredictions.push(prediction);
+      }
+    }
 
     res.json(highProbabilityPredictions);
-
   } catch (error) {
     console.error("Error making the prediction:", error);
     res
