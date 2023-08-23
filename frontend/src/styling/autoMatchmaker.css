@@ -85,3 +85,14 @@ h3 {
   height: 60vh;
   opacity: 70%;
 }
+
+.car-card {
+  background-color: white;
+  color: #1a75bb;
+  border: #1a75bb 1px solid;
+}
+.car-image {
+  object-fit: fill;
+  height: auto;
+  width: auto;
+}

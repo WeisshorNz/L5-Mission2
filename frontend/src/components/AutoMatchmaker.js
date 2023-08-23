@@ -6,19 +6,17 @@ import tHeart from "../images/tHeart.png";
 function AutoMatchmaker() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [recognitionResult, setRecognitionResult] = useState("");
-  const [matchingCars, setMatchingCars] = useState([]); // To store matching car options
+  const [matchingCars, setMatchingCars] = useState([]);
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
 
-    // Check if a file was selected
     if (!file) {
       return;
     }
 
-    // Set up the API endpoint and request headers
-    const apiUrl = "YOUR_CUSTOM_VISION_API_ENDPOINT"; // Replace with your Custom Vision API endpoint
-    const apiKey = "YOUR_CUSTOM_VISION_API_KEY"; // Replace with your Custom Vision API key
+    const apiUrl = "YOUR_CUSTOM_VISION_API_ENDPOINT";
+    const apiKey = "9fa1f92fc90b4d6881ed695eff04f44f";
 
     const headers = {
       "Content-Type": "application/octet-stream",
@@ -39,7 +37,6 @@ function AutoMatchmaker() {
         // Update the recognitionResult state with the result
         setRecognitionResult(result.predictions[0].tagName);
 
-        // Now, let's assume you have a JSON file with car data named 'carData.json'
         // Fetch that JSON file and filter matching cars
         axios.get("../data/carData.json").then((response) => {
           const carOptions = response.data;
@@ -89,13 +86,23 @@ function AutoMatchmaker() {
         </div>
         <p>{recognitionResult}</p>
         <h3>Matching Car Options:</h3>
-        <ul>
+        <div className="matching-cars">
           {matchingCars.map((car, index) => (
-            <li key={index}>
-              {car.make} {car.model} ({car.year}) - ${car.price}
-            </li>
+            <div className="car-card" key={index}>
+              <img
+                className="car-image"
+                src={car.image}
+                alt={`${car.make} ${car.model}`}
+              />
+              <p>Car Type: {car.carType}</p>
+              <p>Make: {car.make}</p>
+              <p>Model: {car.model}</p>
+              <p>Year: {car.year}</p>
+              <p>Price: ${car.price}</p>
+              <p>Color: {car.color}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
