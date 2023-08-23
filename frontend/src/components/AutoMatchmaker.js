@@ -15,8 +15,9 @@ function AutoMatchmaker() {
       return;
     }
 
-    const apiUrl = "YOUR_CUSTOM_VISION_API_ENDPOINT";
-    const apiKey = "APIKEY";
+    const apiUrl =
+      "https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/7389928b-4f78-4fbc-8f08-62b7344e48e0/detect/iterations/Mission2-It3/image";
+    const apiKey = "9fa1f92fc90b4d6881ed695eff04f44f";
 
     const headers = {
       "Content-Type": "application/octet-stream",
