@@ -6,6 +6,7 @@ import tHeart from "../images/tHeart.png";
 function AutoMatchmaker() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [recognitionResult, setRecognitionResult] = useState("");
+  const [matchingCars, setMatchingCars] = useState([]); // To store matching car options
 
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
@@ -16,12 +17,12 @@ function AutoMatchmaker() {
     }
 
     // Set up the API endpoint and request headers
-    const apiUrl = "YOUR_AZURE_API_ENDPOINT"; // Replace with your Azure API endpoint
-    const apiKey = "YOUR_AZURE_API_KEY"; // Replace with your Azure API key
+    const apiUrl = "YOUR_CUSTOM_VISION_API_ENDPOINT"; // Replace with your Custom Vision API endpoint
+    const apiKey = "YOUR_CUSTOM_VISION_API_KEY"; // Replace with your Custom Vision API key
 
     const headers = {
       "Content-Type": "application/octet-stream",
-      "Ocp-Apim-Subscription-Key": apiKey,
+      "Prediction-Key": apiKey,
     };
 
     try {
@@ -29,19 +30,30 @@ function AutoMatchmaker() {
       const reader = new FileReader();
       reader.readAsArrayBuffer(file);
       reader.onload = async () => {
-        // Make the API request to Azure
+        // Make the API request to Custom Vision
         const response = await axios.post(apiUrl, reader.result, { headers });
 
         // Extract the recognition result from the response
         const result = response.data;
 
         // Update the recognitionResult state with the result
-        setRecognitionResult(result.description.captions[0].text);
+        setRecognitionResult(result.predictions[0].tagName);
+
+        // Now, let's assume you have a JSON file with car data named 'carData.json'
+        // Fetch that JSON file and filter matching cars
+        axios.get("../data/carData.json").then((response) => {
+          const carOptions = response.data;
+          const matchingCars = carOptions.filter(
+            (car) => car.carType === result.predictions[0].tagName
+          );
+          setMatchingCars(matchingCars);
+        });
       };
     } catch (error) {
-      console.error("Error uploading and recognizing the image:", error);
+      console.error("Error uploading and recognising the image:", error);
     }
   };
+
   return (
     <div className="autoMatchmaker-container">
       <div className="heading-container">
@@ -50,7 +62,7 @@ function AutoMatchmaker() {
         <img src={tHeart} alt="Heart Logo" className="heart-logo" />
       </div>
       <div className="hero-container">
-        <br></br>
+        <br />
         <div className="input-container">
           <h3>
             Upload an image below of what you're liking the look of, and we'll
@@ -64,7 +76,7 @@ function AutoMatchmaker() {
             accept="image/*"
             onChange={handleImageUpload}
           />
-          <br></br> <br></br> <br></br>
+          <br /> <br /> <br />
           <button>Match Me!</button>
         </div>{" "}
       </div>{" "}
@@ -75,8 +87,16 @@ function AutoMatchmaker() {
             <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
           )}
         </div>
+        <p>{recognitionResult}</p>
+        <h3>Matching Car Options:</h3>
+        <ul>
+          {matchingCars.map((car, index) => (
+            <li key={index}>
+              {car.make} {car.model} ({car.year}) - ${car.price}
+            </li>
+          ))}
+        </ul>
       </div>
-      <p>{recognitionResult}</p>
     </div>
   );
 }
