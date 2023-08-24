@@ -1,4 +1,5 @@
-/* Turners Blue: #1A75BB; */
+/* Turners Blue: #1A75BB; 
+Turner's Red: #B12137*/
 
 .autoMatchmaker-container {
   color: black;
@@ -7,7 +8,7 @@
 .hero-container {
   background-image: url("../images/blueCar.png");
   height: 50vh;
-  width: 100vw;
+  width: 100%;
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -86,18 +87,68 @@ h3 {
   opacity: 70%;
 }
 
+.matching-cars {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+  flex-wrap: wrap;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  align-items: center;
+}
+
 .car-card {
   display: flex;
+  flex-direction: row;
   background-color: white;
-  width: 15rem;
-  height: 8rem;
+  width: 28rem;
+  height: 10rem;
+  margin-bottom: 2rem;
   border-radius: 0.5rem;
   color: #1a75bb;
-  border: #1a75bb 0.5rem solid;
+  border: #1a75bb 0.2rem solid;
+  padding: 0.3rem;
 }
 .car-image {
-  object-fit: cover;
+  object-fit: fit;
   height: 100%;
   width: auto;
   border-radius: 0.5rem;
+  margin-right: 1rem;
+}
+.car-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: start;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.car-info span {
+  color: black;
+  padding-left: 0.3rem;
+
+  font-weight: 400;
+}
+
+.icon-container {
+  margin-top: 7rem;
+  margin-left: 1.5rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.heart-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.icon-container :hover {
+  color: #b12137;
+  cursor: pointer;
+}
+.icon-container :active {
+  color: #b12137;
+  cursor: pointer;
 }
