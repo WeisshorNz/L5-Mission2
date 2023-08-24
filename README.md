@@ -4,14 +4,14 @@
 
 [![Contributors][contributors-shield]][contributors-url]
 
-<p>Luis Rodríguez -</p> [![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
-<p>Kelsie Smith -</p> [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
+Luis Rodríguez - [![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
+Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
 
-<!-- PROJECT LOGO -->gi
+<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/WeisshorNz/L5-Mission2">
-  <img src="../L5-Mission2/frontend/src/images/carAppBanner.png" alt="Logo" width="600" height="200">
+  <img src="../L5-Mission2/frontend/src/images/carAppBanner.png" alt="Banner" width="600" height="200">
   </a>
 
 <h3 align="center">Turner's AutoMatchmaker</h3>
