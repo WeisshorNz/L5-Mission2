@@ -1,11 +1,11 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
-<div align="center">
+
 [![Contributors][contributors-shield]][contributors-url]
 Luis Rodríguez - [![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
 Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
-</div>
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -50,7 +50,7 @@ Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
 
 ## About The Project
 
-<img src="./frontend/src/images/carAppScreenshot.png" alt="Logo" width="800" height="400">
+<img src="./frontend/src/images/carAppScreenshot.png" alt="Logo" width="800" height="500">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
