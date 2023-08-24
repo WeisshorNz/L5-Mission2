@@ -26,14 +26,9 @@ function AutoMatchmaker() {
           "Content-Type": "image/jpeg",
         };
 
-        console.log("Sending data to the server:", reader.result);
-
         const response = await axios.post(apiUrl, reader.result, { headers });
 
-        console.log("Response from server:", response);
-
         const result = response.data;
-        console.log("Response Data from server:", result);
 
         if (result && result.length >= 2) {
           const firstElement = result[0];
@@ -63,7 +58,7 @@ function AutoMatchmaker() {
         }
       };
     } catch (error) {
-      console.error("Error uploading and recognizing the image:", error);
+      console.error("Error uploading and recognising the image:", error);
     }
   };
 

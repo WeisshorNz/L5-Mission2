@@ -89,7 +89,7 @@ h3 {
 
 .matching-cars {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: auto;
   flex-wrap: wrap;
   margin-left: 3rem;
