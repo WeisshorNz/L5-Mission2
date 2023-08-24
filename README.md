@@ -3,13 +3,15 @@
 <!-- PROJECT SHIELDS -->
 
 [![Contributors][contributors-shield]][contributors-url]
-Luis Rodríguez - [![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
-Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
 
-<!-- PROJECT LOGO -->
+<p>Luis Rodríguez -</p> [![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
+<p>Kelsie Smith -</p> [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
+
+<!-- PROJECT LOGO -->gi
 <br />
 <div align="center">
   <a href="https://github.com/WeisshorNz/L5-Mission2">
+  <img src="../L5-Mission2/frontend/src/images/carAppBanner.png" alt="Logo" width="600" height="200">
   </a>
 
 <h3 align="center">Turner's AutoMatchmaker</h3>
@@ -49,7 +51,7 @@ Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
 
 ## About The Project
 
-<img src="../src/images/carAppScreenshot.png" alt="Logo" width="600" height="400">
+<img src="../L5-Mission2/frontend/src/images/carAppScreenshot.png" alt="Logo" width="600" height="400">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -124,7 +126,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 Luis Rodríguez - luisR@missionreadyhq.com
 <br></br><br></br>
-Kelsie Smith - kelsieS@missionreadyhq.com <br></br>
+Kelsie Smith - kelsieS@missionreadyhq.com
 
 - [![LinkedIn - Kelsie Smith][linkedin-shield]][kelsie-linkedin-url]
   <br></br>
