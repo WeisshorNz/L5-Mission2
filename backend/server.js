@@ -6,7 +6,9 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 3001;
+const apiAddress = process.env.API_ADDRESS;
+
 app.use(express.raw({ type: "image/jpeg", limit: "10mb" }));
 app.use(cors());
 
@@ -21,14 +23,11 @@ app.post("/api", async (req, res) => {
       "Content-Type": contentType,
     };
 
-    const response = await axios.post(
-      "https://southeastasia.api.cognitive.microsoft.com/customvision/v3.0/Prediction/7389928b-4f78-4fbc-8f08-62b7344e48e0/detect/iterations/Iteration2/image",
-      imageBinary,
-      { headers }
-    );
+    const response = await axios.post(apiAddress,imageBinary,{ headers });
 
     // res.json(response.data);
 
+           //filter to only capture high probabilty json data received only. 
     const highProbabilityPredictions = [];
     for (const prediction of response.data.predictions) {
       if (prediction.probability >= 0.6) {
@@ -37,6 +36,7 @@ app.post("/api", async (req, res) => {
     }
 
     res.json(highProbabilityPredictions);
+
   } catch (error) {
     console.error("Error making the prediction:", error);
     res
