@@ -3,14 +3,14 @@
 <!-- PROJECT SHIELDS -->
 
 [![Contributors][contributors-shield]][contributors-url]
-[![GitHub - Luis Rodríguez][Github-logo]][luis-github-url]
-[![GitHub - Kelsie Smith][Github-logo]][kelsie-github-url]
+[![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
+[![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/WeisshorNz/L5-Mission2">
-<img src="./src/images/carAppScreenshot.png" alt="Logo" width="600" height="400">
+<img src="../src/images/carAppScreenshot.png" alt="Logo" width="700" height="400">
   </a>
 
 <h3 align="center">Turner's AutoMatchmaker</h3>
@@ -124,8 +124,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Contact
 
 Luis Rodríguez - luisR@missionreadyhq.com
-Kelsie Smith - kelsieS@missionreadyhq.com
-[![LinkedIn - Kelsie Smith][linkedin-shield]][kelsie-linkedin-url]
+<br></br>
+Kelsie Smith -
+[![LinkedIn - Kelsie Smith][linkedin-shield]][kelsie-linkedin-url] - kelsieS@missionreadyhq.com
+<br></br>
 
 Project Link: [https://github.com/WeisshorNz/L5-Mission2](https://github.com/WeisshorNz/L5-Mission2)
 
