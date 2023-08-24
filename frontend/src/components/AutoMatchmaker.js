@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../styling/autoMatchmaker.css";
 import tHeart from "../images/tHeart.png";
+import carData from "../data/carData.json";
+import { FaRegHeart } from "react-icons/fa";
 
 function AutoMatchmaker() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -15,39 +17,53 @@ function AutoMatchmaker() {
       return;
     }
 
-    const apiUrl = "ENDPOINT";
-    const apiKey = "APIKEY";
-
-    const headers = {
-      "Content-Type": "application/octet-stream",
-      "Prediction-Key": apiKey,
-    };
-
     try {
-      // Convert the selected image file to a binary format
       const reader = new FileReader();
       reader.readAsArrayBuffer(file);
       reader.onload = async () => {
-        // Make the API request to Custom Vision
+        const apiUrl = "http://localhost:4000/api";
+        const headers = {
+          "Content-Type": "image/jpeg",
+        };
+
+        console.log("Sending data to the server:", reader.result);
+
         const response = await axios.post(apiUrl, reader.result, { headers });
 
-        // Extract the recognition result from the response
+        console.log("Response from server:", response);
+
         const result = response.data;
+        console.log("Response Data from server:", result);
 
-        // Update the recognitionResult state with the result
-        setRecognitionResult(result.predictions[0].tagName);
+        if (result && result.length >= 2) {
+          const firstElement = result[0];
+          const secondElement = result[1];
 
-        // Fetch that JSON file and filter matching cars
-        axios.get("../data/carData.json").then((response) => {
-          const carOptions = response.data;
-          const matchingCars = carOptions.filter(
-            (car) => car.carType === result.predictions[0].tagName
+          const firstTagName = firstElement.tagName; // CarType
+          const secondTagName = secondElement.tagName; // Colour
+
+          const matchingCars = carData.filter(
+            (car) =>
+              car.carType.toLowerCase() === firstTagName.toLowerCase() &&
+              car.color.toLowerCase() === secondTagName.toLowerCase()
           );
+
           setMatchingCars(matchingCars);
-        });
+
+          setRecognitionResult(
+            `Sounds like your type is ${firstTagName} & ${secondTagName}! 😉
+            Here's a few suitors that just may work:`
+          );
+        } else {
+          console.error("Insufficient data in the response.");
+          setRecognitionResult(
+            "No matches available 🥺 Maybe it's time to find a bike?"
+          );
+          setMatchingCars([]); // Clear the matching cars
+        }
       };
     } catch (error) {
-      console.error("Error uploading and recognising the image:", error);
+      console.error("Error uploading and recognizing the image:", error);
     }
   };
 
@@ -94,16 +110,33 @@ function AutoMatchmaker() {
                 src={car.image}
                 alt={`${car.make} ${car.model}`}
               />
-              <p>Car Type: {car.carType}</p>
-              <p>Make: {car.make}</p>
-              <p>Model: {car.model}</p>
-              <p>Year: {car.year}</p>
-              <p>Price: ${car.price}</p>
-              <p>Color: {car.color}</p>
+              <div className="car-info">
+                <p className="car-info-heading">
+                  Car Type: <span>{car.carType}</span>
+                </p>
+                <p className="car-info-heading">
+                  Make: <span>{car.make}</span>
+                </p>
+                <p className="car-info-heading">
+                  Model:<span>{car.model}</span>
+                </p>
+                <p className="car-info-heading">
+                  Year: <span>{car.year}</span>
+                </p>
+                <p className="car-info-heading">
+                  Price: <span>${car.price}</span>
+                </p>
+                <p className="car-info-heading">
+                  Color: <span>{car.color}</span>
+                </p>
+              </div>
+              <div className="icon-container">
+                <FaRegHeart className="heart-icon" />
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      </div>{" "}
     </div>
   );
 }
