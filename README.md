@@ -1,16 +1,16 @@
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
-
-<p align="center"> [![Contributors][contributors-shield]][contributors-url]
+<div align="center">
+[![Contributors][contributors-shield]][contributors-url]
 Luis Rodríguez - [![GitHub - Luis Rodríguez][Github.logo]][luis-github-url]
 Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
-</p>
+</div>
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/WeisshorNz/L5-Mission2">
-  <img src="./frontend/src/images/carAppBanner.png" alt="Banner" width="600" height="200">
+  <img src="./frontend/src/images/carAppBanner.png" alt="Banner" width="800" height="200">
   </a>
 
 <h3 align="center">Turner's AutoMatchmaker</h3>
@@ -50,7 +50,7 @@ Kelsie Smith - [![GitHub - Kelsie Smith][Github.logo]][kelsie-github-url]
 
 ## About The Project
 
-<img src="./frontend/src/images/carAppScreenshot.png" alt="Logo" width="600" height="400">
+<img src="./frontend/src/images/carAppScreenshot.png" alt="Logo" width="800" height="400">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
