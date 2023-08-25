@@ -26,13 +26,6 @@ function AutoMatchmaker() {
       const reader = new FileReader();
       reader.readAsArrayBuffer(file);
       reader.onload = async () => {
-        // I moved apiUrl  and headers outside the scope of handleImageUpload function
-        // const apiUrl = "http://localhost:4000/api";
-
-        // const headers = {
-        //   "Content-Type": "image/jpeg",
-        // };
-
         try {
           const response = await axios.post(apiUrl, reader.result, { headers });
 
@@ -62,7 +55,7 @@ function AutoMatchmaker() {
             setRecognitionResult(
               "No matches available 🥺 Maybe it's time to find a bike?"
             );
-            setMatchingCars([]); // Clear the matching cars
+            setMatchingCars([]);
           }
         } catch (error) {
           console.error("Error uploading and recognising the image:", error);
