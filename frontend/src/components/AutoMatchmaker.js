@@ -10,6 +10,11 @@ function AutoMatchmaker() {
   const [recognitionResult, setRecognitionResult] = useState("");
   const [matchingCars, setMatchingCars] = useState([]);
 
+  const apiUrl = "http://localhost:4000/api";
+  const headers = {
+    "Content-Type": "image/jpeg",
+  };
+
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
 
@@ -21,40 +26,46 @@ function AutoMatchmaker() {
       const reader = new FileReader();
       reader.readAsArrayBuffer(file);
       reader.onload = async () => {
-        const apiUrl = "http://localhost:4000/api";
-        const headers = {
-          "Content-Type": "image/jpeg",
-        };
+        // I moved apiUrl  and headers outside the scope of handleImageUpload function
+        // const apiUrl = "http://localhost:4000/api";
 
-        const response = await axios.post(apiUrl, reader.result, { headers });
+        // const headers = {
+        //   "Content-Type": "image/jpeg",
+        // };
 
-        const result = response.data;
+        try {
+          const response = await axios.post(apiUrl, reader.result, { headers });
 
-        if (result && result.length >= 2) {
-          const firstElement = result[0];
-          const secondElement = result[1];
+          const result = response.data;
 
-          const firstTagName = firstElement.tagName; // CarType
-          const secondTagName = secondElement.tagName; // Colour
+          if (result && result.length >= 2) {
+            const firstElement = result[0];
+            const secondElement = result[1];
 
-          const matchingCars = carData.filter(
-            (car) =>
-              car.carType.toLowerCase() === firstTagName.toLowerCase() &&
-              car.color.toLowerCase() === secondTagName.toLowerCase()
-          );
+            const firstTagName = firstElement.tagName; // CarType
+            const secondTagName = secondElement.tagName; // Colour
 
-          setMatchingCars(matchingCars);
+            const matchingCars = carData.filter(
+              (car) =>
+                car.carType.toLowerCase() === firstTagName.toLowerCase() &&
+                car.color.toLowerCase() === secondTagName.toLowerCase()
+            );
 
-          setRecognitionResult(
-            `Sounds like your type is ${firstTagName} & ${secondTagName}! 😉
+            setMatchingCars(matchingCars);
+
+            setRecognitionResult(
+              `Sounds like your type is ${firstTagName} & ${secondTagName}! 😉
             Here's a few suitors that just may work:`
-          );
-        } else {
-          console.error("Insufficient data in the response.");
-          setRecognitionResult(
-            "No matches available 🥺 Maybe it's time to find a bike?"
-          );
-          setMatchingCars([]); // Clear the matching cars
+            );
+          } else {
+            console.error("Insufficient data in the response.");
+            setRecognitionResult(
+              "No matches available 🥺 Maybe it's time to find a bike?"
+            );
+            setMatchingCars([]); // Clear the matching cars
+          }
+        } catch (error) {
+          console.error("Error uploading and recognising the image:", error);
         }
       };
     } catch (error) {
